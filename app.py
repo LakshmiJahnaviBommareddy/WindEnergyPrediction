@@ -13,7 +13,7 @@ app = Flask(__name__)
 # =========================
 MODEL_PATH = "model/wind_model.pkl"
 DATA_PATH = "dataset/wind_turbine.csv"
-API_KEY = os.environ.get("OPENWEATHER_API_KEY")  # API key from Render env
+API_KEY = os.environ.get("f572753249bd896a876c99df49bbd00c")  # API key from Render env
 
 # =========================
 # CREATE MODEL FOLDER
