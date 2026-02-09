@@ -1,1 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wind Energy Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            margin-top: 50px;
+        }
+        form {
+            background: white;
+            padding: 25px;
+            display: inline-block;
+            border-radius: 10px;
+        }
+        input {
+            margin: 10px;
+            padding: 8px;
+            width: 260px;
+        }
+        button {
+            padding: 10px 25px;
+            background-color: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        h2 {
+            color: green;
+        }
+    </style>    
+</head>
+<body>
 
+    <h2>Weather-Based Wind Energy Prediction</h2>
+
+    <form action="/predict" method="post">
+        <input type="text" name="city" placeholder="Enter City Name" required><br><br>
+        <input type="number" step="any" name="theoretical_power" placeholder="Theoretical Power Curve (kWh)" required><br><br>
+        <button type="submit">Predict Power Output</button>
+    </form>
+
+    <br>
+
+    {% if prediction %}
+        <h3>Prediction Result</h3>
+        <p><strong>City:</strong> {{ city }}</p>
+        <p><strong>Wind Speed:</strong> {{ wind_speed }} m/s</p>
+        <p><strong>Wind Direction:</strong> {{ wind_direction }}°</p>
+        <p><strong>Predicted Power Output:</strong> {{ prediction | round(2) }} kW</p>
+    {% endif %}
+
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+</body>
+</html>
