@@ -1,9 +1,12 @@
 from flask import Flask, render_template, request
 import requests
+import os
 
 app = Flask(__name__)
 
-API_KEY = "f572753249bd896a876c99df49bbd00c"
+# Get API key from environment variable (Render-safe)
+API_KEY = os.environ.get("OPENWEATHER_API_KEY")
+
 
 @app.route("/", methods=["GET", "POST"])
 def index():
